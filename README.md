@@ -10,6 +10,9 @@ CVPR 2019
 
 ## Installation instructions
 We suggest creating a new virtual environment for a clean installation of all the relevant dependencies.
+Although our code is fully compatible with Python 3, the visualizations depend on OpenDR that only works with Python 2.
+So currently only Python 2 is supported. We plan to drop this dependency in the future.
+
 ```
 virtualenv cmr
 source cmr/bin/activate
@@ -20,7 +23,7 @@ After finishing with the installation, you can continue with running the demo/ev
 In case you want to evaluate our approach on Human3.6M, you also need to manually install the [pycdf package of the spacepy library](https://pythonhosted.org/SpacePy/pycdf.html) to process some of the original files. If you face difficulties with the installation, you can find more elaborate instructions [here](https://stackoverflow.com/questions/37232008/how-read-common-data-formatcdf-in-python).
 
 Alternatively, we also provide a docker image with all the dependencies pre-installed. You can pull the [docker image](https://hub.docker.com/r/chaneyk/graphcmr) by doing ```docker pull chaneyk/graphcmr```.
-We also provide the Dockerfile used to build the the docker image in [docker](https://github.com/nkolot/GraphCMR/blob/master/datasets/preprocess/README.md).
+We also provide the Dockerfile used to build the the docker image in the [docker](https://github.com/nkolot/GraphCMR/blob/master/docker) folder.
 We want to thank [Ken Chaney](https://github.com/k-chaney) for helping us support this functionality.
 
 ## Fetch data

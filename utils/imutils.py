@@ -93,7 +93,6 @@ def uncrop(img, center, scale, orig_shape, rot=0, is_rgb=True):
     if len(img.shape) > 2:
         new_shape += [img.shape[2]]
     new_img = np.zeros(orig_shape, dtype=np.uint8)
-    # new_img = np.zeros(new_shape)
     # Range to fill new array
     new_x = max(0, -ul[0]), min(br[0], orig_shape[1]) - ul[0]
     new_y = max(0, -ul[1]), min(br[1], orig_shape[0]) - ul[1]
@@ -101,7 +100,6 @@ def uncrop(img, center, scale, orig_shape, rot=0, is_rgb=True):
     old_x = max(0, ul[0]), min(orig_shape[1], br[0])
     old_y = max(0, ul[1]), min(orig_shape[0], br[1])
     img = scipy.misc.imresize(img, crop_shape, interp='nearest')
-    # new_img = img[new_y[0]:new_y[1], new_x[0]:new_x[1]]
     new_img[old_y[0]:old_y[1], old_x[0]:old_x[1]] = img[new_y[0]:new_y[1], new_x[0]:new_x[1]]
     return new_img
 

@@ -1,0 +1,11 @@
+chumpy==0.67.6
+neural-renderer-pytorch==1.1.3
+numpy==1.15.4
+opencv-python==3.4.4.19
+opendr==0.77
+scikit-image==0.14.1
+scipy==1.2.0
+tensorboardX==1.6
+torch==1.0.0
+torchvision==0.2.1
+tqdm==4.19.9

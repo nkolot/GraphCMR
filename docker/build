@@ -1,0 +1,24 @@
+#!/bin/bash -e
+
+DOCKER_USER=chaneyk
+
+CUDA_VERSION=10.0
+BASE_NUMBER=1.0
+TORCH_VERSION=1.0.0
+PYTHON_VERSION=""
+PYTHON_TAG=py
+PYTHON_FULL_VERSION="2.7"
+
+IMAGE=graphcmr
+
+docker build -t $IMAGE -f Dockerfile.$IMAGE . \
+             --build-arg PYTHON_VERSION=$PYTHON_VERSION \
+             --build-arg PYTHON_TAG=$PYTHON_TAG \
+             --build-arg PYTHON_FULL_VERSION=$PYTHON_FULL_VERSION \
+             --build-arg CUDA_VERSION=$CUDA_VERSION \
+             --build-arg BASE_NUMBER=$BASE_NUMBER \
+             --build-arg TORCH_VERSION=$TORCH_VERSION \
+             --build-arg TORCH_VERSION=$TORCH_VERSION
+
+docker tag $IMAGE $DOCKER_USER/$IMAGE
+docker push $DOCKER_USER/$IMAGE

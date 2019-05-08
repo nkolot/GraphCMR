@@ -102,3 +102,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# yaml files
+yamls/
+
+# logs
+logs/
+
+# vim swap files
+*.swp

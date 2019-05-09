@@ -3,7 +3,7 @@ Code repository for the paper:
 **Convolutional Mesh Regression for Single-Image Human Shape Reconstruction**  
 [Nikos Kolotouros](https://www.seas.upenn.edu/~nkolot/), [Georgios Pavlakos](https://www.seas.upenn.edu/~pavlakos/), [Kostas Daniilidis](http://www.cis.upenn.edu/~kostas/)  
 CVPR 2019  
-[[paper](http://www.cis.upenn.edu/~kostas/mypub.dir/kolotouros19cvpr.pdf)] [[project page](https://www.seas.upenn.edu/~nkolot/projects/cmr/)]
+[[paper](https://arxiv.org/pdf/1905.03244.pdf)] [[project page](https://www.seas.upenn.edu/~nkolot/projects/cmr/)]
 
 ![teaser](https://www.seas.upenn.edu/~nkolot/projects/cmr/files/model_architecture.png)
 

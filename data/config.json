@@ -1,0 +1,7 @@
+{
+    "num_layers": 5, 
+    "img_res": 224, 
+    "rot_factor": 30, 
+    "scale_factor": 0.25, 
+    "num_channels": 256
+}

@@ -36,7 +36,7 @@ class TrainOptions(object):
         train = self.parser.add_argument_group('Training Options')
         train.add_argument('--dataset', default='itw', choices=['itw', 'all'], help='Choose training dataset')
         train.add_argument('--num_epochs', type=int, default=50, help='Total number of training epochs')
-        train.add_argument('--batch_size', type=int, default=2, help='Batch size')
+        train.add_argument('--batch_size', type=int, default=16, help='Batch size')
         train.add_argument('--summary_steps', type=int, default=100, help='Summary saving frequency')
         train.add_argument('--checkpoint_steps', type=int, default=10000, help='Checkpoint saving frequency')
         train.add_argument('--test_steps', type=int, default=10000, help='Testing frequency')
@@ -51,7 +51,7 @@ class TrainOptions(object):
 
         optim = self.parser.add_argument_group('Optimization')
         optim.add_argument('--adam_beta1', type=float, default=0.9, help='Value for Adam Beta 1')
-        optim.add_argument("--lr", type=float, default=2.5e-4, help="Learning rate")
+        optim.add_argument("--lr", type=float, default=3e-4, help="Learning rate")
         optim.add_argument("--wd", type=float, default=0, help="Weight decay weight")
         return 
 

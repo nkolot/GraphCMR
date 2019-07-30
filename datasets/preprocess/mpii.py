@@ -15,7 +15,7 @@ def mpii_extract(dataset_path, out_path):
     imgnames_, scales_, centers_, parts_ = [], [], [], []
 
     # annotation files
-    annot_file = os.path.join(dataset_path, 'annot', 'train.h5')
+    annot_file = os.path.join('data', 'train.h5')
 
     # read annotations
     f = h5py.File(annot_file, 'r')

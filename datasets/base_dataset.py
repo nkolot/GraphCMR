@@ -179,9 +179,9 @@ class BaseDataset(Dataset):
         # Process image
         img = self.rgb_processing(img, center, sc*scale, rot, flip, pn)
         img = torch.from_numpy(img).float()
-        item['img'] = self.normalize_img(img)
         # Store image before normalization to use it in visualization
-        item['img_orig'] = img
+        item['img_orig'] = img.clone()
+        item['img'] = self.normalize_img(img)
         item['pose'] = torch.from_numpy(self.pose_processing(pose, rot, flip)).float()
         item['betas'] = torch.from_numpy(betas).float()
         item['imgname'] = imgname

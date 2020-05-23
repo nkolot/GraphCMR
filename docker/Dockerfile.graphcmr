@@ -16,16 +16,18 @@ ENV OPENBLASDIR /usr/lib/x86_64-linux-gnu/openblas
 ENV GPU_TARGET = Kepler Maxwell Pascal Volta
 WORKDIR /opt
 
-RUN apt-get update && apt install -y gfortran  libopenblas-dev && \
+RUN apt-get update && apt-get install -y --no-install-recommends gfortran  libopenblas-dev && \
     wget http://icl.utk.edu/projectsfiles/magma/downloads/magma-2.4.0.tar.gz && \
-    tar xzf magma-2.4.0.tar.gz
+    tar xzf magma-2.4.0.tar.gz && \
+    rm magma-2.4.0.tar.gz
+
 WORKDIR /opt/magma-2.4.0
 RUN cp make.inc-examples/make.inc.openblas make.inc && make -j 8
 
 ENV LD_LIBRARY_PATH /usr/local/magma/lib:$LD_LIBRARY_PATH
 
 WORKDIR /opt
-RUN git clone https://github.com/pytorch/pytorch
+RUN git clone https://github.com/pytorch/pytorch --depth 1 --no-single-branch
 WORKDIR /opt/pytorch
 
 RUN git checkout v${TORCH_VERSION}
@@ -36,7 +38,7 @@ RUN TORCH_CUDA_ARCH_LIST="3.5 5.2 6.0 6.1 7.0+PTX" \
     pip${PYTHON_VERSION} install -v .
 
 WORKDIR /opt
-RUN git clone https://github.com/pytorch/vision.git && cd vision && git checkout v0.2.2 && pip${PYTHON_VERSION} install -v .
+RUN git clone --depth 1 --no-single-branch https://github.com/pytorch/vision.git && cd vision && git checkout v0.2.2 && pip${PYTHON_VERSION} install -v .
 
 RUN pip${PYTHON_VERSION} --no-cache-dir install chumpy tensorboardX neural_renderer_pytorch
 
@@ -45,7 +47,7 @@ RUN if [ -z "${PYTHON_VERSION}" ]; then  pip${PYTHON_VERSION} --no-cache-dir ins
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib"
 
 WORKDIR /opt
-RUN wget https://spdf.gsfc.nasa.gov/pub/software/cdf/dist/cdf37_0/cdf-dist-all.tar.gz && gunzip cdf-dist-all.tar.gz && tar -xvf cdf-dist-all.tar
+RUN wget https://spdf.gsfc.nasa.gov/pub/software/cdf/dist/cdf37_0/cdf-dist-all.tar.gz && gunzip cdf-dist-all.tar.gz && tar -xvf cdf-dist-all.tar && rm cdf-dist-all.tar
 WORKDIR /cdf37_0-dist
 RUN make OS=linux ENV=gnu CURSES=no all &&  make INSTALLDIR=/usr/local/cdf install && make clean
 

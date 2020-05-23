@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-DOCKER_USER=chaneyk
+DOCKER_USER=${USER}
 
 CUDA_VERSION=10.0
 BASE_NUMBER=1.0

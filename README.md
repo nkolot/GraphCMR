@@ -1,24 +1,58 @@
 # GraphCMR
 Code repository for the paper:  
 **Convolutional Mesh Regression for Single-Image Human Shape Reconstruction**  
-[Nikos Kolotouros](https://www.seas.upenn.edu/~nkolot/), [Georgios Pavlakos](https://www.seas.upenn.edu/~pavlakos/), [Kostas Daniilidis](http://www.cis.upenn.edu/~kostas/)  
+[Nikos Kolotouros](https://www.nikoskolot.com), [Georgios Pavlakos](https://geopavlakos.github.io), [Kostas Daniilidis](http://www.cis.upenn.edu/~kostas/)  
 CVPR 2019  
-[[paper](https://arxiv.org/pdf/1905.03244.pdf)] [[project page](https://www.seas.upenn.edu/~nkolot/projects/cmr/)]
+[[paper](https://arxiv.org/pdf/1905.03244.pdf)] [[project page](https://www.nikoskolot.com/projects/cmr/)]
 
-![teaser](https://www.seas.upenn.edu/~nkolot/projects/cmr/files/model_architecture.png)
+![teaser](https://www.nikoskolot.com/projects/cmr/files/model_architecture.jpg)
 
 
 ## Installation instructions
-We suggest creating a new virtual environment for a clean installation of all the relevant dependencies.
-Although our code is fully compatible with Python 3, the visualizations depend on OpenDR that only works with Python 2.
-So currently only Python 2 is supported. We plan to drop this dependency in the future.
-
+First, you need to clone the repo:
 ```
-virtualenv cmr
+git clone https://github.com/nkolot/GraphCMR.git
+cd GraphCMR
+git checkout origin/cuda11_fix
+```
+
+We suggest creating a new virtual environment for a clean installation of all the relevant dependencies. You can use venv:
+```
+python3.10 -m venv cmr
 source cmr/bin/activate
-pip install -U pip
+```
+
+or alternatively conda:
+```
+conda create --name cmr python=3.10
+conda activate cmr
+```
+
+Then, you can install the rest of the dependencies. You can adapt these based on your CUDA version:
+```
+# install torch
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu117
+
+# install requirements
 pip install -r requirements.txt
 ```
+
+Installing opendr can been more challenging. We followed [these instructions](https://github.com/NVlabs/GLAMR/pull/41) from [take2rohit](https://github.com/take2rohit):
+```
+# install opendr
+git clone https://github.com/mattloper/opendr.git
+cd opendr
+git checkout origin/v0.78
+cd opendr/contexts
+wget http://files.is.tue.mpg.de/mloper/opendr/osmesa/OSMesa.Linux.x86_64.zip
+sed -i '18s/.*/from opendr.contexts._constants import */' ctx_base.pyx
+cd ../..
+python setup.py build
+python setup.py install
+cd ..
+pip uninstall opendr
+```
+
 After finishing with the installation, you can continue with running the demo/evaluation/training code.
 In case you want to evaluate our approach on Human3.6M, you also need to manually install the [pycdf package of the spacepy library](https://pythonhosted.org/SpacePy/pycdf.html) to process some of the original files. If you face difficulties with the installation, you can find more elaborate instructions [here](https://stackoverflow.com/questions/37232008/how-read-common-data-formatcdf-in-python).
 

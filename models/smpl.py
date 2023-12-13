@@ -19,7 +19,7 @@ class SMPL(nn.Module):
     def __init__(self, model_file=cfg.SMPL_FILE):
         super(SMPL, self).__init__()
         with open(model_file, 'rb') as f:
-            smpl_model = pickle.load(f)
+            smpl_model = pickle.load(f, encoding='latin1')
         J_regressor = smpl_model['J_regressor'].tocoo()
         row = J_regressor.row
         col = J_regressor.col

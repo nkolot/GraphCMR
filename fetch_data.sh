@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Download pretrained networks
-wget https://seas.upenn.edu/~nkolot/data/cmr/models.tar --directory-prefix=data
+wget https://cs.utexas.edu/~pavlakos/cmr/data/models.tar --directory-prefix=data
 tar -xvf data/models.tar -C data && rm data/models.tar
 
 # Download SMPL model

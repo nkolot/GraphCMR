@@ -49,7 +49,7 @@ def adjmat_sparse(adjmat, nsize=1):
 
 def get_graph_params(filename, nsize=1):
     """Load and process graph adjacency matrix and upsampling/downsampling matrices."""
-    data = np.load(filename, encoding='latin1')
+    data = np.load(filename, encoding='latin1', allow_pickle=True)
     A = data['A']
     U = data['U']
     D = data['D']

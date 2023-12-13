@@ -3,7 +3,7 @@ This file contains functions that are used to perform data augmentation.
 """
 import torch
 import numpy as np
-import scipy.misc
+from skimage.transform import rotate, resize
 import cv2
 
 def get_transform(center, scale, res, rot=0):
@@ -71,10 +71,10 @@ def crop(img, center, scale, res, rot=0):
 
     if not rot == 0:
         # Remove padding
-        new_img = scipy.misc.imrotate(new_img, rot)
+        new_img = rotate(new_img, rot, preserve_range=True)
         new_img = new_img[pad:-pad, pad:-pad]
 
-    new_img = scipy.misc.imresize(new_img, res)
+    new_img = resize(new_img, res, preserve_range=True)
     return new_img
 
 def uncrop(img, center, scale, orig_shape, rot=0, is_rgb=True):
@@ -99,7 +99,7 @@ def uncrop(img, center, scale, orig_shape, rot=0, is_rgb=True):
     # Range to sample from original image
     old_x = max(0, ul[0]), min(orig_shape[1], br[0])
     old_y = max(0, ul[1]), min(orig_shape[0], br[1])
-    img = scipy.misc.imresize(img, crop_shape, interp='nearest')
+    img = resize(img, crop_shape, order=0, preserve_range=True)
     new_img[old_y[0]:old_y[1], old_x[0]:old_x[1]] = img[new_y[0]:new_y[1], new_x[0]:new_x[1]]
     return new_img
 

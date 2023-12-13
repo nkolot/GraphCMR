@@ -1,7 +1,7 @@
 import os
 import sys
+import cv2
 import numpy as np
-import scipy.misc
 import argparse
 import cPickle as pickle
 
@@ -43,7 +43,7 @@ def up_3d_extract(dataset_path, out_path, mode):
 
         # scale and center
         render_name = os.path.join(dataset_path, '%s_render_light.png' % img_base)
-        I = scipy.misc.imread(render_name)
+        I = cv2.imread(render_name)
         ys, xs = np.where(np.min(I,axis=2)<255)
         bbox = np.array([np.min(xs), np.min(ys), np.max(xs)+1, np.max(ys)+1])
         center = [(bbox[2]+bbox[0])/2, (bbox[3]+bbox[1])/2]

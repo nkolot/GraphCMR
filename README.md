@@ -1,8 +1,8 @@
 # GraphCMR
-Code repository for the paper:
-**Convolutional Mesh Regression for Single-Image Human Shape Reconstruction**
-[Nikos Kolotouros](https://www.nikoskolot.com), [Georgios Pavlakos](https://geopavlakos.github.io), [Kostas Daniilidis](http://www.cis.upenn.edu/~kostas/)
-CVPR 2019
+Code repository for the paper:  
+**Convolutional Mesh Regression for Single-Image Human Shape Reconstruction**  
+[Nikos Kolotouros](https://www.nikoskolot.com), [Georgios Pavlakos](https://geopavlakos.github.io), [Kostas Daniilidis](http://www.cis.upenn.edu/~kostas/)  
+CVPR 2019  
 [[paper](https://arxiv.org/pdf/1905.03244.pdf)] [[project page](https://www.nikoskolot.com/projects/cmr/)]
 
 ![teaser](https://www.nikoskolot.com/projects/cmr/files/model_architecture.jpg)

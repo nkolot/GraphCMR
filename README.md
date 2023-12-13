@@ -1,15 +1,21 @@
 # GraphCMR
-Code repository for the paper:  
-**Convolutional Mesh Regression for Single-Image Human Shape Reconstruction**  
-[Nikos Kolotouros](https://www.seas.upenn.edu/~nkolot/), [Georgios Pavlakos](https://www.seas.upenn.edu/~pavlakos/), [Kostas Daniilidis](http://www.cis.upenn.edu/~kostas/)  
-CVPR 2019  
-[[paper](https://arxiv.org/pdf/1905.03244.pdf)] [[project page](https://www.seas.upenn.edu/~nkolot/projects/cmr/)]
+Code repository for the paper:
+**Convolutional Mesh Regression for Single-Image Human Shape Reconstruction**
+[Nikos Kolotouros](https://www.nikoskolot.com), [Georgios Pavlakos](https://geopavlakos.github.io), [Kostas Daniilidis](http://www.cis.upenn.edu/~kostas/)
+CVPR 2019
+[[paper](https://arxiv.org/pdf/1905.03244.pdf)] [[project page](https://www.nikoskolot.com/projects/cmr/)]
 
-![teaser](https://www.seas.upenn.edu/~nkolot/projects/cmr/files/model_architecture.png)
+![teaser](https://www.nikoskolot.com/projects/cmr/files/model_architecture.jpg)
 
+##  [<img src="https://i.imgur.com/QCojoJk.png" width="40"> You can run the GraphCMR demo in Google Colab](https://colab.research.google.com/drive/1fkNyuoeYqq1eTukZX_5y4qwFheAfhZoM?usp=sharing)
 
 ## Installation instructions
-We suggest creating a new virtual environment for a clean installation of all the relevant dependencies.
+#### If you want to run the inference code and these instructions are not compatible with your setup, we have updated the installation procedure and inference code to be compatible with recent cuda/pytorch versions. Please check the ``cuda11_fix`` branch.
+We recommend using the docker image that has all the dependencies pre-installed. You can pull the [docker image](https://hub.docker.com/r/chaneyk/graphcmr) by doing ```docker pull chaneyk/graphcmr```.
+We also provide the Dockerfile used to build the docker image in the [docker](https://github.com/nkolot/GraphCMR/blob/master/docker) folder.
+We want to thank [Ken Chaney](https://github.com/k-chaney) for helping us support this functionality.
+
+Alternatively, we suggest creating a new virtual environment for a clean installation of all the relevant dependencies.
 Although our code is fully compatible with Python 3, the visualizations depend on OpenDR that only works with Python 2.
 So currently only Python 2 is supported. We plan to drop this dependency in the future.
 
@@ -21,10 +27,6 @@ pip install -r requirements.txt
 ```
 After finishing with the installation, you can continue with running the demo/evaluation/training code.
 In case you want to evaluate our approach on Human3.6M, you also need to manually install the [pycdf package of the spacepy library](https://pythonhosted.org/SpacePy/pycdf.html) to process some of the original files. If you face difficulties with the installation, you can find more elaborate instructions [here](https://stackoverflow.com/questions/37232008/how-read-common-data-formatcdf-in-python).
-
-Alternatively, we also provide a docker image with all the dependencies pre-installed. You can pull the [docker image](https://hub.docker.com/r/chaneyk/graphcmr) by doing ```docker pull chaneyk/graphcmr```.
-We also provide the Dockerfile used to build the the docker image in the [docker](https://github.com/nkolot/GraphCMR/blob/master/docker) folder.
-We want to thank [Ken Chaney](https://github.com/k-chaney) for helping us support this functionality.
 
 ## Fetch data
 To be able to run our code you need to also fetch some additional files. The recommended way of doing it is by running
